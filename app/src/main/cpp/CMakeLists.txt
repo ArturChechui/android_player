@@ -2,10 +2,19 @@ cmake_minimum_required(VERSION 3.22.1)
 
 project("player")
 
-add_library(${CMAKE_PROJECT_NAME} SHARED
-        native-lib.cpp)
+add_library(
+        player
+        SHARED
+        JniBridge.cpp
+        AudioEngine.cpp
+        HttpDataSource.cpp
+        AudioDecoder.cpp
+)
 
-target_link_libraries(${CMAKE_PROJECT_NAME}
+target_link_libraries(
+        player
         android
+        log
         aaudio
-        log)
+        mediandk
+)
